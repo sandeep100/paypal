@@ -1,0 +1,24 @@
+<% if @attorneys.any? %>
+	<br> <br>
+	<% if current_user.role == 1 %>
+	  <h1> Search result for Company </h1>
+		<% @attorneys.each do |i| %>
+		  Name: <%= i.first_name + " " + i.last_name   %><br>
+		  Email: <%= i.email %><br>
+		  Industry: <%= i.industry_type %><br>
+		  Dept size: <%= i.dept_size %><br><br>
+		<% end %>
+	<% else %>
+	  <h1> Search result for Attorney </h1>
+	  <% @attorneys.each do |i| %>
+	    Ratings in (*****).<br>
+	    Reviews.<br>
+		  Law School: <%= i.school_name %><br>
+      Area of Experties: <%= i.expert %><br>
+		  Name: <%= i.first_name + " " +i.middle_name+ " " + i.last_name   %><br>
+		  Email: <%= i.email %><br><br>
+		<% end %>
+	<% end %>	
+<% else %>
+  <h1> No Record Found </h1>
+<% end %>

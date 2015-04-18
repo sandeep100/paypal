@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attorneys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Middle name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Address1</th>
+      <th>Address2</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Zip code</th>
+      <th>School name</th>
+      <th>Greduate year</th>
+      <th>Jurisdiction</th>
+      <th>Altematives</th>
+      <th>Expert</th>
+      <th>Support</th>
+      <th>Gender</th>
+      <th>About</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attorneys.each do |attorney| %>
+      <tr>
+        <td><%= attorney.first_name %></td>
+        <td><%= attorney.middle_name %></td>
+        <td><%= attorney.last_name %></td>
+        <td><%= attorney.email %></td>
+        <td><%= attorney.address1 %></td>
+        <td><%= attorney.address2 %></td>
+        <td><%= attorney.country %></td>
+        <td><%= attorney.city %></td>
+        <td><%= attorney.zip_code %></td>
+        <td><%= attorney.school_name %></td>
+        <td><%= attorney.greduate_year %></td>
+        <td><%= attorney.jurisdiction %></td>
+        <td><%= attorney.altematives %></td>
+        <td><%= attorney.expert %></td>
+        <td><%= attorney.support %></td>
+        <td><%= attorney.gender %></td>
+        <td><%= attorney.about %></td>
+        <td><%= link_to 'Show', attorney %></td>
+        <td><%= link_to 'Edit', edit_attorney_path(attorney) %></td>
+        <td><%= link_to 'Destroy', attorney, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Attorney', new_attorney_path %>

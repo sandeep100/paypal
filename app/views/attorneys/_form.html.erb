@@ -1,0 +1,116 @@
+<%= form_for(@attorney) do |f| %>
+  <% if @attorney.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attorney.errors.count, "error") %> prohibited this attorney from being saved:</h2>
+
+      <ul>
+      <% @attorney.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :middle_name %><br>
+    <%= f.text_field :middle_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, required: true %>
+  </div>
+  </div><div class="field">
+    <%= f.label :password %><br>
+    <%#= f.password_field :password, required: true %>
+    <%= f.password_field :password, required: true, :pattern=>".{8,20}", :title => "password should be 8 charctors or more." %>
+  </div>
+  <div class="field">
+    <%= f.label :address1 %><br>
+    <%= f.text_area :address1 %>
+  </div>
+  <div class="field">
+    <%= f.label :address2 %><br>
+    <%= f.text_area :address2 %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+    <%#= f.country_select :country, params[:country],  selected: "IN" %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :zip_code %><br>
+    <%= f.text_field :zip_code %>
+  </div>
+  <div class="field">
+    <%= f.label :school_name %><br>
+    <%= f.text_field :school_name %>
+  </div>
+  <div class="field">
+    <%= f.label :greduate_year %><br>
+    <%= f.number_field :greduate_year %>
+  </div>
+  <div class="field">
+    <%= f.label :jurisdiction %><br>
+    <%= f.text_field :jurisdiction, placeholder: "Where allowed to Practice" %>
+  </div>
+  <div class="field">
+    <%= f.label :altematives %><br>
+    <%#= f.text_field :altematives %>
+    <%= f.select(:altematives, ['Law student','Paralegal','Translator','Proofreader'], :prompt => 'Select') %>
+  </div>
+  <div class="field">
+    <%= f.label :expert %><br>
+    <%#= f.text_field :expert %>
+    <%= f.select(:expert, ['jury', 'medical', 'psychological', 'business', 'finance', 'accountant', 'engineering', 'biological', 'chemical', 'environmental', 'forensics', 'social work', 'government', 'NGOs', 'Other - specify'], :prompt => 'Select') %>
+  </div>
+  <div class="field">
+    <%= f.label :support %><br>
+    <%#= f.text_field :support %>
+    <%= f.select(:support, ['private investigator', 'law enforcement', 'lab tests'], :prompt => 'Select') %>
+
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%#= f.text_field :gender %>
+    <%= f.select(:gender, ['Male', 'Female'], :prompt => 'Select') %>
+
+  </div>
+  <div class="field">
+    <%= f.label :profile_image %><br>
+    <%= f.file_field :profile_image %>
+  <div class="field">
+    <%= f.label :image_1 %><br>
+    <%= f.file_field :image_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :image_2 %><br>
+    <%= f.file_field :image_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :image_3 %><br>
+    <%= f.file_field :image_3 %>
+  </div>
+  <div class="field">
+    <%= f.label :about %><br>
+    <%= f.text_area :about %>
+  </div><br>
+  <div class="field">
+    <input type="checkbox" required>Accept Terms of use
+  </div><br>
+  <input type="hidden" value="2" name="role">
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

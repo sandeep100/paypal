@@ -1,0 +1,24 @@
+<script>
+  $("#bio").click(function() {
+    <% if current_user.role == nil %>
+     $("#comp_attor").show();
+    <% else %>
+     <% if !current_user.company.nil? %>
+       window.location = "<%= companies_path %>";
+      <% else %>
+        window.location = "<%= attorneys_path %>";
+      <% end %>
+    <% end %>  
+  });
+  function company() {
+    window.location = "<%= new_company_path %>";
+  }
+  function attorney() {
+    window.location = "<%= new_attorney_path %>";
+  }
+</script>
+
+
+
+<%= link_to "Checkout", Company.paypal_url("http://localhost:3000") %>
+

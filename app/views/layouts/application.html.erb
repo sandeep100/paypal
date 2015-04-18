@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0">
+    <title>::  EVE ::</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "/css/stylesheet.css"%>
+    <%= stylesheet_link_tag "/css/responsive.css"%>
+    <%#= javascript_include_tag "/js/jquery.min.js" %>
+    <%= javascript_include_tag "/js/function.js" %>
+  </head>
+  <body>
+    <div class="<%= !user_signed_in? ? 'bodyBanner' : nil %>">
+      <%= render "layouts/header" %>
+      <div class="clearfix"></div>
+      <% if user_signed_in? %>
+        <div style="float:right;">
+          <%= form_tag '/search', :method => 'get' do %>
+            <p>
+              <%= text_field_tag :search, params[:search] %>
+              <%= submit_tag "Search", :name => nil %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/leftpanel'%>
+      <% end%>
+      <%= yield %>
+      <%# if !user_signed_in? %>
+    		<!-- <%#= link_to "or Facebook", user_omniauth_authorize_path(:facebook) %><br> -->
+    		<!-- <%#= link_to "Linkedin",user_omniauth_authorize_path(:linkedin) %><br> -->
+    		<%#= link_to "Google + ", user_omniauth_authorize_path(:google_oauth2) %>
+    	<%# end %>
+      <div class="clearfix"></div>
+      <%= render 'layouts/footer'%>
+    </div>
+  </body>
+</html>

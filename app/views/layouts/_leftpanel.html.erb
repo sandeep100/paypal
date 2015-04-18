@@ -1,0 +1,30 @@
+<% if current_user.image.nil? %>
+	<% if current_user.authentications.any? %>
+		<% if !current_user.authentications.last.social_image.nil? %>
+			<%= image_tag (current_user.authentications.first.social_image) %>
+		<% else %>
+			<%= image_tag (current_user.image) %>
+		<% end %> 
+	<% else %>
+		<%= image_tag (current_user.image) %>
+	<% end %>
+<% else %>
+	<%= image_tag (current_user.image) %>
+<% end %>
+<div>
+  <%= current_user.first_name %>&nbsp;<%= current_user.last_name %>
+</div>
+<div id = "bio">Bio</div><br>
+<div id = "comp_attor" style = "display:none">
+	<span>
+	  <input type = "checkbox" id ="comp_check" onclick="company();">Company
+	</span>
+	<span>
+	  <input type = "checkbox" id ="attorney_check" onclick="attorney();">Attorney
+	</span>
+</div>
+<a>Browser</a><br>
+<a>Message</a><br>
+<a>Bdding</a><br>
+<a href="<%= root_url %>"> My Profile</a><br>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
